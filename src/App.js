@@ -67,7 +67,7 @@ const App = () => {
 
   const validateEmails = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/validate-emails', { emails });
+      const response = await axios.post('https://email-backend-wqe7.onrender.com/validate-emails', { emails });
       setInvalidEmails(response.data.invalidEmails);
       if (response.data.invalidEmails.length > 0) {
         toast.error('Some emails are invalid. Please correct them before sending.');
@@ -82,7 +82,7 @@ const App = () => {
 
   const validatePassword = async (password) => {
     try {
-      const response = await axios.post('http://localhost:5000/validate-password', { password });
+      const response = await axios.post('https://email-backend-wqe7.onrender.com/validate-password', { password });
       setIsPasswordValid(response.data.isValid);
     } catch (error) {
       console.error('Error validating password:', error);
@@ -116,7 +116,7 @@ const App = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/send-emails', formData, {
+      const response = await axios.post('https://email-backend-wqe7.onrender.com/send-emails', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
